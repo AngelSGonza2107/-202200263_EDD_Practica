@@ -93,7 +93,7 @@ void Pila::generarReporte()
     Pasajero *actual = primero;
     while (actual)
     {
-      archivo << "nodo" << actual << " [label=\"" << actual->graficarDatosCola() << "\"];\n";
+      archivo << "nodo" << actual << " [label=\"" << actual->graficarDatosPila() << "\"];\n";
       if (actual->getSiguiente())
       {
         archivo << "nodo" << actual << " -> nodo" << actual->getSiguiente() << ";\n";

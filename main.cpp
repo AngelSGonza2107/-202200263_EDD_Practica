@@ -211,7 +211,6 @@ void cargarMovimientos(const string &filename, ListaCircularDoble &listaDisponib
       getline(ss, comando, ',');
 
       if (comando == "MantenimientoAviones")
-      // Ver por que la lista de mantenimiento termina con 4 aviones y no con 5
       {
         getline(ss, accion, ',');
         getline(ss, numeroRegistro, ';');
@@ -220,6 +219,7 @@ void cargarMovimientos(const string &filename, ListaCircularDoble &listaDisponib
           Avion *test = listaDisponibles.buscarAvion(numeroRegistro);
           if (test != nullptr)
           {
+            test->estado = "Mantenimiento";
             listaDisponibles.moverAvion(listaMantenimiento, test);
             cout << "Avion " << numeroRegistro << " movido a Mantenimiento." << endl;
           }
@@ -233,6 +233,7 @@ void cargarMovimientos(const string &filename, ListaCircularDoble &listaDisponib
           Avion *test = listaMantenimiento.buscarAvion(numeroRegistro);
           if (test != nullptr)
           {
+            test->estado = "Disponible";
             listaMantenimiento.moverAvion(listaDisponibles, test);
             cout << "Avion " << numeroRegistro << " movido a Disponible." << endl;
           }
@@ -249,7 +250,8 @@ void cargarMovimientos(const string &filename, ListaCircularDoble &listaDisponib
           Pasajero *pasajero = colaPasajeros.desencolar2();
           if (pasajero->equipajeFacturado > 0)
           {
-            pilaEquipaje.apilar(pasajero);
+            Pasajero *pasajero2 = new Pasajero(pasajero->nombre, pasajero->nacionalidad, pasajero->noPasaporte, pasajero->vuelo, pasajero->asiento, pasajero->destino, pasajero->origen, pasajero->equipajeFacturado);
+            pilaEquipaje.apilar(pasajero2);
           }
           listaPasajeros.insertarOrdenado(pasajero);
         }

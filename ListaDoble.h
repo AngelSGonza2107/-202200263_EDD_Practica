@@ -80,7 +80,7 @@ void ListaDoble::insertarOrdenado(Pasajero *pasajero)
   {
     int vueloActual = stoi(actual->vuelo.substr(1));
     int vueloPasajero = stoi(pasajero->vuelo.substr(1));
-    if (vueloActual < vueloPasajero || (actual->vuelo == pasajero->vuelo && actual->asiento > pasajero->asiento))
+    if (vueloActual < vueloPasajero || (actual->vuelo == pasajero->vuelo && actual->asiento < pasajero->asiento))
     {
       pasajero->setSiguiente(actual);
       pasajero->setAnterior(actual->getAnterior());

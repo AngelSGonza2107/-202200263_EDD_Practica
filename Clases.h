@@ -18,12 +18,12 @@ private:
   int capacidad;
   int pesoMaxDespegue;
   string aerolinea;
-  string estado;
   Avion *siguiente;
   Avion *anterior;
 
 public:
   string numeroRegistro;
+  string estado;
   Avion(string vuelo, string numeroRegistro, string modelo, string fabricante, int anoFabricacion, int capacidad, int pesoMaxDespegue, string aerolinea, string estado);
   Avion *getSiguiente();
   Avion *getAnterior();
@@ -103,6 +103,7 @@ public:
   int asiento;
   int equipajeFacturado;
   Pasajero(string nombre, string nacionalidad, string noPasaporte, string vuelo, int asiento, string destino, string origen, int equipajeFacturado);
+  Pasajero(const Pasajero &otro);
   Pasajero *getSiguiente();
   Pasajero *getAnterior();
   void setSiguiente(Pasajero *siguiente);
